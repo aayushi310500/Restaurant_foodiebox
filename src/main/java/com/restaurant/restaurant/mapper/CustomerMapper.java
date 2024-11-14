@@ -1,5 +1,8 @@
-package com.restaurant.restaurant;
+package com.restaurant.restaurant.mapper;
 
+import com.restaurant.restaurant.dto.CustomerRequest;
+import com.restaurant.restaurant.dto.CustomerResponse;
+import com.restaurant.restaurant.entity.Customer;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,7 +16,7 @@ public class CustomerMapper {
                 .build();
     }
 
-//    public CustomerResponse toCustomerResponse(Customer customer) {
-//        return new CustomerResponse(customer.getFirstName(), customer.getLastName(), customer.getEmail());
-//    }
+    public CustomerResponse toCustomerResponse(Customer customer) {
+        return new CustomerResponse(customer.getFirstName(), customer.getLastName(), customer.getEmail());
+    }
 }

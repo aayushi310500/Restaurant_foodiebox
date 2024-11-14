@@ -1,7 +1,9 @@
-package com.restaurant.restaurant;
+package com.restaurant.restaurant.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public record CustomerRequest (
         @NotNull(message = "Customer should be present")
@@ -25,5 +27,9 @@ public record CustomerRequest (
         @JsonProperty("password")
         String password
 ){
-
+//        public CustomerRequest {
+//                // This block runs when a new record instance is created.
+//                System.out.println("Customer Request.....");
+//        }
 }
+

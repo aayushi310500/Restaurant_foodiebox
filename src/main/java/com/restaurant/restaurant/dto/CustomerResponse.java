@@ -1,4 +1,4 @@
-package com.restaurant.restaurant;
+package com.restaurant.restaurant.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

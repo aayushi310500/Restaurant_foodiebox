@@ -1,4 +1,4 @@
-package com.restaurant.restaurant;
+package com.restaurant.restaurant.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
