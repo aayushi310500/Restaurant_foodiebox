@@ -57,16 +57,20 @@ private final JwtAuthValidate jwtauthValidate;
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteProduct(@PathVariable Long id){
+    public ResponseEntity<String> deleteProduct(@PathVariable Long id,@RequestHeader("Authorization") String token){
+        String email = jwtauthValidate.extractAndCheckToken(token);
+        if(email==null){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
         return ResponseEntity.ok((productService.deleteById(id)));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateProduct(@PathVariable  Long id, @Valid @RequestBody ProductUpdateRequest request){
-//        String email = jwtauthValidate.extractAndCheckToken(token);
-//        if(email==null){
-//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-//        }
+    public ResponseEntity<String> updateProduct(@PathVariable  Long id, @Valid @RequestBody ProductUpdateRequest request,@RequestHeader("Authorization") String token){
+     String email = jwtauthValidate.extractAndCheckToken(token);
+        if(email==null){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
 //        Customer customer = customerService.getCustomer(email);
 //        if(customer==null){
 //            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();

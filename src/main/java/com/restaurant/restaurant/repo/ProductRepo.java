@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProductRepo extends JpaRepository<Product, Long> {
-    @Query(value = "SELECT * FROM product p WHERE p.price BETWEEN :low AND :high ORDER BY p.price ASC LIMIT 2", nativeQuery = true)
+    @Query(value = "SELECT * FROM product p WHERE p.price BETWEEN :low AND :high ORDER BY p.price DESC LIMIT 2", nativeQuery = true)
     List<Product> findProductByRange(@Param("low") double low, @Param("high") double high);
 //    Optional<Product> findByName(String productName);
 //    deleteById(String id);

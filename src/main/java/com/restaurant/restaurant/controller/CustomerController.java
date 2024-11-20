@@ -41,7 +41,15 @@ public ResponseEntity<CustomerResponse> getCustomer(@PathVariable("email") Strin
 //    }
 
     @DeleteMapping("customers/{id_}")
-    public  ResponseEntity<String> deleteCustomer(@PathVariable("id_") String id) {
+    public  ResponseEntity<String> deleteCustomer(@PathVariable("id_") String id, @RequestHeader("Authorization") String token) {
+        String email = jwtauthValidate.extractAndCheckToken(token);
+        if(email==null){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        Customer customer = customerService.getCustomer(email);
+        if(customer==null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     return ResponseEntity.ok(customerService.deleteCustomerById(id));
     }
 
