@@ -12,3 +12,4 @@ public record CustomerResponse(
         String email
 ) {
 }
+
